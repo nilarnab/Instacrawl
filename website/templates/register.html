@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+</head>
+<body>
+
+<form method="post" action="/handle_reg/">
+    {% csrf_token %}
+    <input type="text" name="name">
+    <input type="text" name="username">
+    <input type="email" name="email">
+    <select name="genre">
+        <option id="meme">MEME</option>
+        <option id="gen">GENERAL</option>
+        <option id="pers">PERSONAL</option>
+    </select>
+    <button type="submit" name="submit"></button>
+</form>
+
+</body>
+</html>
