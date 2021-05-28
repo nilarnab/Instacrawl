@@ -1,17 +1,15 @@
 from django.shortcuts import render, HttpResponse
 import requests
-from datetime import datetime
+import datetime
 from django.contrib import messages
 import time
 from home.engines.cron_update import *
 
-from home.models import Accounts
-
-'CRON JOB'
+from home.models import Accounts, Resource
 
 
 def cron_calls(request):
-    manage_update(Accounts)
+    manage_update(Accounts, Resource)
     return HttpResponse('Cron Called')
 
 
@@ -32,7 +30,7 @@ def handle_register(request):
         username = request.POST.get('username')
         genre = request.POST.get('genre')
         print(name, username, email, genre)
-        account = Accounts(name=name, insta_username=username, email=email, genre=genre, date=datetime.today())
+        account = Accounts(name=name, insta_username=username, email=email, genre=genre, date=datetime.date.today())
         print("data", Accounts.objects.all()[0].name)
         # cron_calls()
         account.save()
